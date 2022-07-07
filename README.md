@@ -24,3 +24,18 @@ Example:
 https://redsky-uat.perf.target.com/redsky_aggregations/v1/redsky/case_study_v1?key=3yUxt7WltYG7MFKPp7uyELi1K40ad2ys&tcin=13860428
 Reads pricing information from a NoSQL data store and combines it with the product id and name from the HTTP request into a single response.  
 BONUS: Accepts an HTTP PUT request at the same path (/products/{id}), containing a JSON request body similar to the GET response, and updates the product’s price in the data store. 
+
+## Example Inputs
+Option 1
+13860428
+54456119
+13264003
+12954218
+35645454
+
+Option 2
+{'id': 12954218, 'name': 'Gone with the Wind', 'video_type': 'DVD', 'value': 10.15, 'currency': 'USD'}
+{'id': 13264003, 'name': 'Casablanca', 'video_type': 'DVD', 'value': 20.25, 'currency': 'USD'}
+{'id': 13860428, 'name': 'The Big Lebowski', 'video_type': 'Blu-Ray', 'value': 13.49, 'currency': 'USD'}
+{'id': 35645454, 'name': 'Pacific Rim', 'video_type': 'Blu-Ray', 'value': 59.99, 'currency': 'USD'}
+{'id': 54456119, 'name': 'The Shawshank Redemption', 'video_type': 'DVD', 'value': 60.22, 'currency': 'USD'}
