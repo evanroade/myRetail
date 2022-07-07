@@ -9,7 +9,7 @@ app = Flask(__name__)
 api = Api(app)
 
 # --- SQLAlchemy DB Connection
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///product.db'
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///product.db"
 db_s = SQLAlchemy(app)
 
 # --- Mongo DB Connection
@@ -55,6 +55,9 @@ class Products(Resource):
 		video_put_args.add_argument("currency", type=str)
 
 		args = video_put_args.parse_args()
+		for value in args:
+			if not args[value]:
+				abort(418, message="Please enter a complete JSON object")
 		products_result = MovieModel.query.filter_by(id=movie_id).first()
 		if not products_result:
 			abort(404, message="Movie not found")
@@ -69,7 +72,7 @@ class Products(Resource):
 		#db_s.session.commit()
 		#collection.update_one({"_id":movie_id}, {"$set":{"currency":args['currency']}})
 
-		collection.update_one({"_id":movie_id}, {"$set":{"value":args['value']}})
+		collection.update_one({"_id":movie_id}, {"$set":{"value":args["value"]}})
 		
 		mongo_result = collection.find({"_id":movie_id})
 		for pricing_result in mongo_result:
